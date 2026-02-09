@@ -1,0 +1,1134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Will You Be My Valentine? 💖</title>
+
+    <!-- Google Fonts for beautiful typography -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Animate.css for additional animations -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <!-- Particles.js for background effects -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <!-- GSAP for advanced animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <style>
+      /* ============================================
+           CSS Custom Properties (Variables)
+           ============================================ */
+      :root {
+        --primary-pink: #ff6b9d;
+        --secondary-pink: #ff8fab;
+        --light-pink: #ffc2d1;
+        --soft-white: #fff5f7;
+        --deep-rose: #c9184a;
+        --gold: #ffd700;
+        --gradient-romantic: linear-gradient(
+          135deg,
+          #ff6b9d 0%,
+          #ff8fab 50%,
+          #ffc2d1 100%
+        );
+        --shadow-soft: 0 10px 40px rgba(255, 107, 157, 0.3);
+        --shadow-glow: 0 0 30px rgba(255, 107, 157, 0.5);
+      }
+
+      /* ============================================
+           Base Styles & Reset
+           ============================================ */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+        overflow: hidden;
+      }
+
+      body {
+        font-family: "Quicksand", sans-serif;
+        background: linear-gradient(
+          135deg,
+          #ffeef2 0%,
+          #fff5f7 50%,
+          #ffe4ec 100%
+        );
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        position: relative;
+      }
+
+      /* ============================================
+           Particles Background Container
+           ============================================ */
+      #particles-js {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        pointer-events: none;
+      }
+
+      /* ============================================
+           Floating Hearts Background Animation
+           ============================================ */
+      .floating-hearts {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+        overflow: hidden;
+      }
+
+      .heart {
+        position: absolute;
+        font-size: 16px;
+        animation: floatUp linear infinite;
+        opacity: 0.35;
+      }
+
+      @keyframes floatUp {
+        0% {
+          transform: translateY(100vh) rotate(0deg) scale(0.6);
+          opacity: 0;
+        }
+        8% {
+          opacity: 0.35;
+        }
+        92% {
+          opacity: 0.35;
+        }
+        100% {
+          transform: translateY(-100vh) rotate(360deg) scale(1);
+          opacity: 0;
+        }
+      }
+
+      /* ============================================
+           Sparkle Effects
+           ============================================ */
+      .sparkle {
+        position: fixed;
+        width: 8px;
+        height: 8px;
+        background: radial-gradient(circle, var(--gold) 0%, transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 2;
+        animation: sparkle 2s ease-in-out infinite;
+      }
+
+      @keyframes sparkle {
+        0%,
+        100% {
+          transform: scale(0);
+          opacity: 0;
+        }
+        50% {
+          transform: scale(0.8);
+          opacity: 0.6;
+        }
+      }
+
+      /* ============================================
+           Main Content Container
+           ============================================ */
+      .container {
+        text-align: center;
+        z-index: 10;
+        padding: 40px;
+        position: relative;
+      }
+
+      /* ============================================
+           Main Question Styling
+           ============================================ */
+      .question {
+        font-family: "Dancing Script", cursive;
+        font-size: clamp(2.5rem, 8vw, 5rem);
+        color: var(--deep-rose);
+        margin-bottom: 20px;
+        text-shadow:
+          2px 2px 4px rgba(201, 24, 74, 0.2),
+          0 0 40px rgba(255, 107, 157, 0.3);
+        animation: pulseText 2s ease-in-out infinite;
+        position: relative;
+      }
+
+      .question::before,
+      .question::after {
+        content: "✨";
+        position: absolute;
+        top: -20px;
+        animation: twinkle 1s ease-in-out infinite alternate;
+      }
+
+      .question::before {
+        left: -30px;
+      }
+
+      .question::after {
+        right: -30px;
+        animation-delay: 0.5s;
+      }
+
+      @keyframes pulseText {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.02);
+        }
+      }
+
+      @keyframes twinkle {
+        0% {
+          opacity: 0.5;
+          transform: scale(0.8) rotate(-10deg);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1.2) rotate(10deg);
+        }
+      }
+
+      /* ============================================
+           Emoji Heart Animation
+           ============================================ */
+      .heart-emoji {
+        display: inline-block;
+        animation: heartBeat 1s ease-in-out infinite;
+      }
+
+      @keyframes heartBeat {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        25% {
+          transform: scale(1.3);
+        }
+        50% {
+          transform: scale(1);
+        }
+        75% {
+          transform: scale(1.3);
+        }
+      }
+
+      /* ============================================
+           Buttons Container
+           ============================================ */
+      .buttons {
+        display: flex;
+        gap: 30px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 30px;
+        position: relative;
+      }
+
+      /* ============================================
+           Base Button Styling
+           ============================================ */
+      .btn {
+        padding: 18px 50px;
+        font-size: 1.3rem;
+        font-family: "Quicksand", sans-serif;
+        font-weight: 600;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      /* Button shine effect */
+      .btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.4),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+
+      .btn:hover::before {
+        left: 100%;
+      }
+
+      /* ============================================
+           Yes Button - Beautiful & Inviting
+           ============================================ */
+      .btn-yes {
+        position: relative;
+        z-index: 2; /* Always on top so it stays visible and clickable */
+        background: var(--gradient-romantic);
+        color: white;
+        box-shadow: var(--shadow-soft);
+        animation: yesButtonPulse 2s ease-in-out infinite;
+      }
+
+      .btn-yes:hover {
+        transform: scale(1.15) translateY(-5px);
+        box-shadow:
+          var(--shadow-glow),
+          0 20px 40px rgba(255, 107, 157, 0.4);
+      }
+
+      .btn-yes:active {
+        transform: scale(1.1);
+      }
+
+      @keyframes yesButtonPulse {
+        0%,
+        100% {
+          box-shadow:
+            var(--shadow-soft),
+            0 0 0 0 rgba(255, 107, 157, 0.25);
+        }
+        50% {
+          box-shadow:
+            var(--shadow-soft),
+            0 0 0 10px rgba(255, 107, 157, 0);
+        }
+      }
+
+      /* ============================================
+           No Button - Evasive & Playful
+           ============================================ */
+      .btn-no {
+        position: relative;
+        z-index: 1; /* Below Yes so it never covers the Yes button */
+        background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);
+        color: #888;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      .btn-no:hover {
+        background: linear-gradient(135deg, #d0d0d0 0%, #e5e5e5 100%);
+      }
+
+      /* ============================================
+           Hint Text Styling
+           ============================================ */
+      .hint {
+        margin-top: 25px;
+        font-size: 1rem;
+        color: var(--primary-pink);
+        font-style: italic;
+        animation: fadeInUp 1s ease-out 0.5s both;
+        position: relative;
+      }
+
+      .hint::before {
+        content: "👆";
+        display: block;
+        font-size: 1.5rem;
+        margin-bottom: 5px;
+        animation: bounce 1s ease-in-out infinite;
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ============================================
+           Success Message Styling
+           ============================================ */
+      .success-message {
+        display: none;
+        text-align: center;
+        z-index: 10;
+      }
+
+      .success-message.show {
+        display: block;
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      .success-text {
+        font-family: "Quicksand", sans-serif;
+        font-weight: 700;
+        font-size: clamp(2.75rem, 11vw, 6rem);
+        color: var(--deep-rose);
+        margin-bottom: 30px;
+        text-shadow:
+          2px 2px 4px rgba(201, 24, 74, 0.2),
+          0 0 60px rgba(255, 107, 157, 0.5);
+        transform: none !important;
+        letter-spacing: 0.02em;
+      }
+
+      .success-subtext {
+        font-size: 1.5rem;
+        color: var(--primary-pink);
+        margin-top: 20px;
+        animation: fadeInUp 1s ease-out 0.5s both;
+      }
+
+      /* ============================================
+           Confetti Canvas
+           ============================================ */
+      #confetti-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 100;
+      }
+
+      /* ============================================
+           Love Letter Animation
+           ============================================ */
+      .love-letter {
+        position: fixed;
+        font-size: 2rem;
+        pointer-events: none;
+        z-index: 50;
+        animation: letterFall 3s ease-in-out forwards;
+      }
+
+      @keyframes letterFall {
+        0% {
+          opacity: 1;
+          transform: translateY(-50px) rotate(0deg);
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(100vh) rotate(360deg);
+        }
+      }
+
+      /* ============================================
+           Responsive Design
+           ============================================ */
+      @media (max-width: 768px) {
+        .container {
+          padding: 20px;
+        }
+
+        .buttons {
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        .btn {
+          padding: 15px 40px;
+          font-size: 1.1rem;
+        }
+
+        .question::before,
+        .question::after {
+          display: none;
+        }
+      }
+
+      /* ============================================
+           Cursor Trail Effect
+           ============================================ */
+      .cursor-trail {
+        position: fixed;
+        width: 18px;
+        height: 18px;
+        pointer-events: none;
+        z-index: 1000;
+        font-size: 14px;
+        opacity: 0.7;
+        animation: cursorFade 0.8s ease-out forwards;
+      }
+
+      @keyframes cursorFade {
+        0% {
+          opacity: 0.6;
+          transform: scale(0.9);
+        }
+        100% {
+          opacity: 0;
+          transform: scale(0.5) translateY(-8px);
+        }
+      }
+
+      /* ============================================
+           Glow Ring Animation
+           ============================================ */
+      .glow-ring {
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        border: 3px solid var(--light-pink);
+        border-radius: 50%;
+        animation: glowRing 3s ease-in-out infinite;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      @keyframes glowRing {
+        0%,
+        100% {
+          transform: scale(0.9);
+          opacity: 0;
+        }
+        50% {
+          transform: scale(1.3);
+          opacity: 0.25;
+        }
+      }
+
+      /* ============================================
+           Hidden State
+           ============================================ */
+      .hidden {
+        display: none !important;
+      }
+
+      /* ============================================
+           "View on PC" message (shown on phone/small screens)
+           ============================================ */
+      .phone-message {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background: linear-gradient(
+          135deg,
+          #ffeef2 0%,
+          #fff5f7 50%,
+          #ffe4ec 100%
+        );
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 2rem;
+        font-family: "Quicksand", sans-serif;
+      }
+
+      .phone-message .phone-icon {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+      }
+
+      .phone-message h2 {
+        color: var(--deep-rose);
+        font-size: clamp(1.25rem, 5vw, 1.75rem);
+        margin-bottom: 1rem;
+        line-height: 1.4;
+      }
+
+      .phone-message p {
+        color: var(--primary-pink);
+        font-size: clamp(1rem, 4vw, 1.2rem);
+        max-width: 320px;
+        line-height: 1.5;
+      }
+
+      .phone-message .arrow {
+        margin: 1rem 0;
+        font-size: 2rem;
+      }
+
+      @media (max-width: 768px) {
+        .phone-message {
+          display: flex;
+        }
+        .app-content {
+          display: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Shown only on phone: prompt to open on PC -->
+    <div class="phone-message" id="phone-message">
+      <span class="phone-icon">💕</span>
+      <h2>Hey cutie, you found me! 💖</h2>
+      <p>
+        But the real magic happens on your computer... Open this on your laptop
+        and let your cursor dance around!
+      </p>
+      <span class="arrow">📱 → 💻</span>
+      <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.9">
+        I have something special that'll make your heart flutter ✨💕
+      </p>
+    </div>
+
+    <!-- Main experience (hidden on phone via CSS) -->
+    <div class="app-content">
+      <!-- Particles.js Background -->
+      <div id="particles-js"></div>
+
+      <!-- Floating Hearts Background -->
+      <div class="floating-hearts" id="floating-hearts"></div>
+
+      <!-- Confetti Canvas -->
+      <canvas id="confetti-canvas"></canvas>
+
+      <!-- Main Question Container -->
+      <div class="container" id="question-container">
+        <!-- Decorative Glow Ring -->
+        <div class="glow-ring"></div>
+
+        <!-- Main Question Text -->
+        <h1 class="question animate__animated animate__fadeInDown">
+          Will you be my val? <span class="heart-emoji">💖</span>
+        </h1>
+
+        <!-- Button Container -->
+        <div class="buttons">
+          <button class="btn btn-yes" id="yes-btn">Yes 💕</button>
+          <button
+            class="btn btn-no animate__animated animate__fadeIn"
+            id="no-btn"
+          >
+            No 💔
+          </button>
+        </div>
+
+        <!-- Playful Hint Text -->
+        <p class="hint">Don't say no 💔. Say yes say yes say yes...</p>
+      </div>
+
+      <!-- Success Message (Initially Hidden) -->
+      <div class="success-message" id="success-container">
+        <h1 class="success-text">Yay! 💘 I knew you'd say yes!</h1>
+        <p class="success-subtext">
+          Cutie! Princess! AWelewa! 💕 Ain't you happy 😊?
+        </p>
+        <div
+          style="margin-top: 30px; font-size: 3rem"
+          class="animate__animated animate__heartBeat animate__infinite"
+        >
+          😊💕😊
+        </div>
+      </div>
+    </div>
+    <!-- /.app-content -->
+
+    <script>
+      // ============================================
+      // Configuration & State
+      // ============================================
+      const config = {
+        noButtonEscapeDistance: 150,
+        noButtonSpeed: 0.3,
+        heartEmojis: [
+          "💕",
+          "💖",
+          "💗",
+          "💘",
+          "💝",
+          "💞",
+          "💓",
+          "❤️",
+          "🩷",
+          "🌸",
+        ],
+        sparkleCount: 6,
+        floatingHeartCount: 12,
+      };
+
+      // ============================================
+      // DOM Elements
+      // ============================================
+      const questionContainer = document.getElementById("question-container");
+      const successContainer = document.getElementById("success-container");
+      const yesBtn = document.getElementById("yes-btn");
+      const noBtn = document.getElementById("no-btn");
+      const floatingHeartsContainer =
+        document.getElementById("floating-hearts");
+      const confettiCanvas = document.getElementById("confetti-canvas");
+      const ctx = confettiCanvas.getContext("2d");
+
+      // ============================================
+      // Initialize Particles.js Background
+      // ============================================
+      particlesJS("particles-js", {
+        particles: {
+          number: { value: 28, density: { enable: true, value_area: 1200 } },
+          color: { value: ["#ff6b9d", "#ff8fab", "#ffc2d1"] },
+          shape: { type: "circle", stroke: { width: 0, color: "#000000" } },
+          opacity: {
+            value: 0.25,
+            random: true,
+            anim: { enable: true, speed: 0.8, opacity_min: 0.08, sync: false },
+          },
+          size: {
+            value: 4,
+            random: true,
+            anim: { enable: false },
+          },
+          line_linked: {
+            enable: true,
+            distance: 180,
+            color: "#ffc2d1",
+            opacity: 0.12,
+            width: 1,
+          },
+          move: {
+            enable: true,
+            speed: 0.8,
+            direction: "none",
+            random: true,
+            straight: false,
+            out_mode: "out",
+            bounce: false,
+          },
+        },
+        interactivity: {
+          detect_on: "canvas",
+          events: {
+            onhover: { enable: true, mode: "grab" },
+            onclick: { enable: false },
+            resize: true,
+          },
+          modes: {
+            grab: { distance: 120, line_linked: { opacity: 0.25 } },
+            push: { particles_nb: 2 },
+          },
+        },
+        retina_detect: true,
+      });
+
+      // ============================================
+      // Create Floating Hearts Background
+      // ============================================
+      function createFloatingHearts() {
+        for (let i = 0; i < config.floatingHeartCount; i++) {
+          const heart = document.createElement("div");
+          heart.className = "heart";
+          heart.textContent =
+            config.heartEmojis[
+              Math.floor(Math.random() * config.heartEmojis.length)
+            ];
+          heart.style.left = Math.random() * 100 + "%";
+          heart.style.animationDuration = Math.random() * 8 + 18 + "s";
+          heart.style.animationDelay = Math.random() * 8 + "s";
+          heart.style.fontSize = Math.random() * 12 + 12 + "px";
+          floatingHeartsContainer.appendChild(heart);
+        }
+      }
+
+      // ============================================
+      // Create Sparkle Effects
+      // ============================================
+      function createSparkles() {
+        for (let i = 0; i < config.sparkleCount; i++) {
+          setTimeout(() => {
+            const sparkle = document.createElement("div");
+            sparkle.className = "sparkle";
+            sparkle.style.left = Math.random() * 100 + "%";
+            sparkle.style.top = Math.random() * 100 + "%";
+            sparkle.style.animationDelay = Math.random() * 2 + "s";
+            document.body.appendChild(sparkle);
+
+            // Remove sparkle after animation
+            setTimeout(() => sparkle.remove(), 3000);
+          }, i * 200);
+        }
+      }
+
+      // Recreate sparkles less often (subtle)
+      setInterval(createSparkles, 12000);
+
+      // ============================================
+      // Cursor Trail Effect
+      // ============================================
+      let lastTrailTime = 0;
+      document.addEventListener("mousemove", (e) => {
+        const now = Date.now();
+        if (now - lastTrailTime < 180) return; // Subtle: fewer cursor trails
+        lastTrailTime = now;
+
+        const trail = document.createElement("div");
+        trail.className = "cursor-trail";
+        trail.textContent =
+          config.heartEmojis[
+            Math.floor(Math.random() * config.heartEmojis.length)
+          ];
+        trail.style.left = e.clientX + "px";
+        trail.style.top = e.clientY + "px";
+        document.body.appendChild(trail);
+
+        setTimeout(() => trail.remove(), 1000);
+      });
+
+      // ============================================
+      // No Button Escape Logic
+      // ============================================
+      function getDistance(x1, y1, x2, y2) {
+        return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+      }
+
+      function moveNoButton(mouseX, mouseY) {
+        const rect = noBtn.getBoundingClientRect();
+        const btnCenterX = rect.left + rect.width / 2;
+        const btnCenterY = rect.top + rect.height / 2;
+
+        const distance = getDistance(mouseX, mouseY, btnCenterX, btnCenterY);
+
+        // If mouse is close enough, escape!
+        if (distance < config.noButtonEscapeDistance) {
+          // Calculate escape direction (away from mouse)
+          const angle = Math.atan2(btnCenterY - mouseY, btnCenterX - mouseX);
+
+          // Add some randomness to the escape
+          const randomAngle = angle + ((Math.random() - 0.5) * Math.PI) / 2;
+          const escapeDistance = 200 + Math.random() * 100;
+
+          let newX = btnCenterX + Math.cos(randomAngle) * escapeDistance;
+          let newY = btnCenterY + Math.sin(randomAngle) * escapeDistance;
+
+          // Keep button within viewport bounds
+          const padding = 20;
+          const maxX = window.innerWidth - rect.width - padding;
+          const maxY = window.innerHeight - rect.height - padding;
+
+          newX = Math.max(padding, Math.min(newX - rect.width / 2, maxX));
+          newY = Math.max(padding, Math.min(newY - rect.height / 2, maxY));
+
+          // Apply smooth transition using GSAP
+          gsap.to(noBtn, {
+            duration: config.noButtonSpeed,
+            left: newX + "px",
+            top: newY + "px",
+            position: "fixed",
+            ease: "power2.out",
+            onStart: () => {
+              // Add a little shake animation
+              gsap.to(noBtn, {
+                duration: 0.1,
+                rotation: (Math.random() - 0.5) * 20,
+                yoyo: true,
+                repeat: 1,
+              });
+            },
+          });
+        }
+      }
+
+      // Track mouse movement for No button escape
+      document.addEventListener("mousemove", (e) => {
+        if (!noBtn.classList.contains("hidden")) {
+          moveNoButton(e.clientX, e.clientY);
+        }
+      });
+
+      // Touch support for mobile
+      document.addEventListener("touchmove", (e) => {
+        if (!noBtn.classList.contains("hidden") && e.touches.length > 0) {
+          moveNoButton(e.touches[0].clientX, e.touches[0].clientY);
+        }
+      });
+
+      // ============================================
+      // Confetti Animation System
+      // ============================================
+      class Confetti {
+        constructor() {
+          this.particles = [];
+          this.colors = [
+            "#ff6b9d",
+            "#ff8fab",
+            "#ffc2d1",
+            "#ffd700",
+            "#ff69b4",
+            "#ff1493",
+          ];
+          this.shapes = ["circle", "heart", "star"];
+        }
+
+        resize() {
+          confettiCanvas.width = window.innerWidth;
+          confettiCanvas.height = window.innerHeight;
+        }
+
+        createParticle(x, y) {
+          return {
+            x: x || Math.random() * confettiCanvas.width,
+            y: y || -20,
+            size: Math.random() * 10 + 5,
+            color: this.colors[Math.floor(Math.random() * this.colors.length)],
+            shape: this.shapes[Math.floor(Math.random() * this.shapes.length)],
+            speedX: (Math.random() - 0.5) * 8,
+            speedY: Math.random() * 3 + 2,
+            rotation: Math.random() * 360,
+            rotationSpeed: (Math.random() - 0.5) * 10,
+            opacity: 1,
+            gravity: 0.1,
+            friction: 0.99,
+          };
+        }
+
+        drawHeart(ctx, x, y, size, rotation) {
+          ctx.save();
+          ctx.translate(x, y);
+          ctx.rotate((rotation * Math.PI) / 180);
+          ctx.beginPath();
+          ctx.moveTo(0, size / 4);
+          ctx.bezierCurveTo(size / 2, -size / 2, size, size / 4, 0, size);
+          ctx.bezierCurveTo(-size, size / 4, -size / 2, -size / 2, 0, size / 4);
+          ctx.fill();
+          ctx.restore();
+        }
+
+        drawStar(ctx, x, y, size, rotation) {
+          ctx.save();
+          ctx.translate(x, y);
+          ctx.rotate((rotation * Math.PI) / 180);
+          ctx.beginPath();
+          for (let i = 0; i < 5; i++) {
+            const angle = (i * 4 * Math.PI) / 5 - Math.PI / 2;
+            const px = Math.cos(angle) * size;
+            const py = Math.sin(angle) * size;
+            if (i === 0) ctx.moveTo(px, py);
+            else ctx.lineTo(px, py);
+          }
+          ctx.closePath();
+          ctx.fill();
+          ctx.restore();
+        }
+
+        draw() {
+          ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+
+          this.particles.forEach((p, index) => {
+            ctx.globalAlpha = p.opacity;
+            ctx.fillStyle = p.color;
+
+            if (p.shape === "circle") {
+              ctx.beginPath();
+              ctx.arc(p.x, p.y, p.size / 2, 0, Math.PI * 2);
+              ctx.fill();
+            } else if (p.shape === "heart") {
+              this.drawHeart(ctx, p.x, p.y, p.size, p.rotation);
+            } else if (p.shape === "star") {
+              this.drawStar(ctx, p.x, p.y, p.size / 2, p.rotation);
+            }
+
+            // Update physics
+            p.speedY += p.gravity;
+            p.speedX *= p.friction;
+            p.x += p.speedX;
+            p.y += p.speedY;
+            p.rotation += p.rotationSpeed;
+
+            // Fade out when near bottom
+            if (p.y > confettiCanvas.height - 100) {
+              p.opacity -= 0.02;
+            }
+
+            // Remove dead particles
+            if (p.opacity <= 0 || p.y > confettiCanvas.height + 50) {
+              this.particles.splice(index, 1);
+            }
+          });
+
+          ctx.globalAlpha = 1;
+        }
+
+        burst(x, y, count = 50) {
+          for (let i = 0; i < count; i++) {
+            const particle = this.createParticle(x, y);
+            particle.speedX = (Math.random() - 0.5) * 15;
+            particle.speedY = Math.random() * -15 - 5;
+            this.particles.push(particle);
+          }
+        }
+
+        rain(count = 100) {
+          for (let i = 0; i < count; i++) {
+            setTimeout(() => {
+              this.particles.push(this.createParticle());
+            }, i * 30);
+          }
+        }
+
+        animate() {
+          this.draw();
+          requestAnimationFrame(() => this.animate());
+        }
+      }
+
+      const confetti = new Confetti();
+      confetti.resize();
+      confetti.animate();
+
+      window.addEventListener("resize", () => confetti.resize());
+
+      // ============================================
+      // Yes Button Click Handler
+      // ============================================
+      yesBtn.addEventListener("click", () => {
+        // Create burst effect at button position
+        const rect = yesBtn.getBoundingClientRect();
+        confetti.burst(
+          rect.left + rect.width / 2,
+          rect.top + rect.height / 2,
+          45,
+        );
+
+        // Animate out the question container
+        gsap.to(questionContainer, {
+          duration: 0.5,
+          scale: 0.8,
+          opacity: 0,
+          ease: "power2.in",
+          onComplete: () => {
+            questionContainer.classList.add("hidden");
+
+            // Show success message
+            successContainer.classList.add("show");
+
+            // Trigger confetti rain
+            confetti.rain(80);
+
+            // Create love letter falling effect
+            createLoveLetters();
+
+            // Subtle success reveal
+            gsap.fromTo(
+              successContainer,
+              { scale: 0.92, opacity: 0 },
+              { scale: 1, opacity: 1, duration: 0.7, ease: "power2.out" },
+            );
+          },
+        });
+      });
+
+      // ============================================
+      // Love Letters Falling Effect
+      // ============================================
+      function createLoveLetters() {
+        const letters = [
+          "💌",
+          "💕",
+          "💖",
+          "💗",
+          "💘",
+          "💝",
+          "💞",
+          "💓",
+          "🌹",
+          "🎀",
+        ];
+
+        for (let i = 0; i < 12; i++) {
+          setTimeout(() => {
+            const letter = document.createElement("div");
+            letter.className = "love-letter";
+            letter.textContent =
+              letters[Math.floor(Math.random() * letters.length)];
+            letter.style.left = Math.random() * window.innerWidth + "px";
+            letter.style.top = "-50px";
+            letter.style.fontSize = Math.random() * 30 + 20 + "px";
+            document.body.appendChild(letter);
+
+            setTimeout(() => letter.remove(), 3000);
+          }, i * 150);
+        }
+      }
+
+      // ============================================
+      // Initialize Everything
+      // ============================================
+      function init() {
+        createFloatingHearts();
+        createSparkles();
+
+        // Subtle intro animations
+        gsap.from(".question", {
+          duration: 1.1,
+          y: -40,
+          opacity: 0,
+          ease: "power2.out",
+        });
+
+        gsap.fromTo(
+          ".btn-yes",
+          { x: -40, opacity: 0 },
+          {
+            x: 0,
+            opacity: 1,
+            duration: 0.8,
+            delay: 0.35,
+            ease: "power2.out",
+            overwrite: "auto",
+          },
+        );
+
+        gsap.from(".btn-no", {
+          duration: 0.8,
+          x: 40,
+          opacity: 0,
+          delay: 0.5,
+          ease: "power2.out",
+        });
+
+        gsap.from(".hint", {
+          duration: 0.7,
+          y: 20,
+          opacity: 0,
+          delay: 0.65,
+          ease: "power2.out",
+        });
+      }
+
+      // Start the magic!
+      init();
+    </script>
+  </body>
+</html>
